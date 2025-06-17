@@ -43,20 +43,6 @@ body {
     background-attachment: fixed;
 }
 
-/* ----- FONDS DYNAMIQUES ----- */
-.bg-stars {
-    background: url('https://media.giphy.com/media/l1J3rGigrYfx8aKqI/giphy.gif') center/cover no-repeat fixed;
-}
-.bg-nebula {
-    background: url('https://media.giphy.com/media/3o752ou642xf3N5gkw/giphy.gif') center/cover no-repeat fixed;
-}
-.bg-galaxy {
-    background: url('https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif') center/cover no-repeat fixed;
-}
-.bg-guardian {
-    background: url('https://media.giphy.com/media/3oEdv5XB9XlYRi5Fzq/giphy.gif') center/cover no-repeat fixed;
-}
-
 /* ----- EN-TÊTE ----- */
 header {
     background: var(--header-bg-gradient);
