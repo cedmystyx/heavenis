@@ -149,45 +149,6 @@ footer {
     backdrop-filter: blur(6px);
 }
 
-/* ----- SÉLECTEUR DE THÈME ----- */
-.theme-selector {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 35, 60, 0.9);
-    padding: 12px 18px;
-    border-radius: 14px;
-    box-shadow: 0 0 18px var(--shadow-hover);
-    z-index: 9999;
-    transition: all 0.3s ease;
-    max-width: 90vw;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.theme-selector label {
-    color: #eee;
-    font-size: 1em;
-    margin-right: 10px;
-    user-select: none;
-}
-
-.theme-selector select {
-    background: #003c5a;
-    color: #fff;
-    border: 1px solid var(--border-accent);
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.95em;
-    outline: none;
-    transition: background 0.3s ease;
-    white-space: nowrap;
-}
-
-.theme-selector select:hover {
-    background: #005b88;
-}
-
 /* ----- RESPONSIVE DESIGN ----- */
 @media (max-width: 1024px) {
     main {
