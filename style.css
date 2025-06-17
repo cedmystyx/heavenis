@@ -43,24 +43,26 @@ body {
     background-attachment: fixed;
 }
 
+/* ----- FONDS DYNAMIQUES ----- */
+
 /* Fond étoiles animées */
 .bg-stars {
-  background: url('https://i.imgur.com/TONGIF-stars.gif') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/l1J3rGigrYfx8aKqI/giphy.gif') center/cover no-repeat fixed;
 }
 
-/* Fond nébuleuse */
+/* Fond nébuleuse (issue de la NASA/JPL) */
 .bg-nebula {
-  background: url('https://i.imgur.com/TONGIF-nebula.gif') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/3o752ou642xf3N5gkw/giphy.gif') center/cover no-repeat fixed;
 }
 
-/* Fond galaxie */
+/* Fond galaxie (loop style universel) */
 .bg-galaxy {
-  background: url('https://i.imgur.com/TONGIF-galaxy.gif') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif') center/cover no-repeat fixed;
 }
 
-/* Fond style Gardiens de la Galaxie */
+/* Fond style Gardiens de la Galaxie (Baby Groot dansant) */
 .bg-guardian {
-  background: url('https://i.imgur.com/TONGIF-guardian.gif') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/3oEdv5XB9XlYRi5Fzq/giphy.gif') center/cover no-repeat fixed;
 }
 
 /* ----- EN-TÊTE ----- */
