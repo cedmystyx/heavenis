@@ -85,34 +85,9 @@
         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
-
-    <div class="footer-bottom" aria-hidden="true">
+    <div class="footer-bottom">
       &copy; 2025 Univers Céleste – Heavenis & Zephyros
     </div>
   </footer>
-
-  <!-- Script de changement de thème -->
-  <script>
-    function changeTheme(themeClass) {
-      document.body.className = themeClass;
-      // Sauvegarde du choix dans localStorage
-      try {
-        localStorage.setItem('preferredTheme', themeClass);
-      } catch (e) {}
-    }
-
-    // Chargement du thème sauvegardé
-    document.addEventListener('DOMContentLoaded', () => {
-      try {
-        const savedTheme = localStorage.getItem('preferredTheme');
-        if (savedTheme) {
-          document.body.className = savedTheme;
-          const themeSelect = document.getElementById('theme');
-          if (themeSelect) themeSelect.value = savedTheme;
-        }
-      } catch (e) {}
-    });
-  </script>
-
 </body>
 </html>
