@@ -136,17 +136,76 @@ p, li {
     color: var(--text-main);
 }
 
-/* ----- PIED DE PAGE ----- */
-footer {
-    text-align: center;
-    padding: 30px;
-    background: rgba(0, 20, 35, 0.6);
-    color: #d0f6ff;
-    font-size: 1em;
-    margin-top: 80px;
-    border-top: 2px solid var(--border-accent);
-    box-shadow: inset 0 4px 12px rgba(0, 150, 255, 0.2);
-    backdrop-filter: blur(6px);
+.footer-celeste {
+  background: linear-gradient(145deg, rgba(25, 10, 50, 0.95), rgba(10, 5, 30, 0.95));
+  backdrop-filter: blur(6px);
+  color: #cfd9ff;
+  padding: 40px 20px 20px;
+  border-top: 2px solid rgba(180, 200, 255, 0.1);
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 250px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  color: #e0eaff;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: #c0d0ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #88ccff;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 1.6em;
+}
+
+.footer-social-icons a {
+  color: #c0d0ff;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.footer-social-icons a:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9em;
+  color: #999;
 }
 
 /* ----- RESPONSIVE DESIGN ----- */
