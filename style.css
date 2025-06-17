@@ -226,26 +226,133 @@ footer {
 }
 
 /* ----- RESPONSIVE DESIGN ----- */
-@media (max-width: 768px) {
+
+/* Desktop large, nothing special here */
+
+@media (max-width: 1024px) {
+    /* Pour les écrans intermédiaires un peu plus petits */
+    main {
+        padding: 50px 30px;
+    }
+}
+
+/* Tablettes : 481px à 768px */
+@media (max-width: 768px) and (min-width: 481px) {
     header h1 {
-        font-size: 2.3em;
+        font-size: 2.5em;
+        padding: 8px 16px;
+    }
+
+    nav a {
+        font-size: 1.1em;
+        margin: 10px 14px;
+        padding: 10px 16px;
+    }
+
+    main {
+        padding: 40px 25px;
+        max-width: 90%;
+        border-radius: 15px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+
+    .theme-selector {
+        top: 15px;
+        right: 15px;
+        padding: 10px 16px;
+    }
+}
+
+/* Mobile (petites résolutions) - max 480px */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.1em;
+        padding: 6px 12px;
     }
 
     nav a {
         display: block;
-        margin: 12px auto;
-        text-align: center;
+        margin: 10px auto;
+        font-size: 1em;
+        padding: 8px 12px;
+        border-radius: 25px;
     }
 
     main {
-        padding: 30px 20px;
+        padding: 25px 15px;
+        max-width: 95%;
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    p, li {
+        font-size: 1.1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1em;
     }
 
     .theme-selector {
         top: unset;
-        bottom: 20px;
+        bottom: 15px;
         right: 50%;
         transform: translateX(50%);
+        padding: 8px 14px;
+        border-radius: 12px;
+    }
+}
+
+/* Montres connectées (smartwatches) - très petites résolutions, max 280px */
+@media (max-width: 280px) {
+    header {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+        padding: 4px 8px;
+    }
+
+    nav a {
+        font-size: 0.85em;
+        margin: 6px 8px;
+        padding: 6px 10px;
+        border-radius: 18px;
+    }
+
+    main {
+        padding: 15px 10px;
+        max-width: 100%;
+        border-radius: 10px;
+        font-size: 0.9em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+    }
+
+    p, li {
+        font-size: 0.9em;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+
+    .theme-selector {
+        display: none; /* Optionnel : on masque la sélection de thème sur montre */
     }
 }
 
@@ -286,23 +393,4 @@ footer {
     padding: 1.3rem 1.6rem;
     color: #e0faff;
     font-size: 1.2rem;
-    font-family: var(--font-base);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    resize: vertical;
-    min-height: 55px;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: var(--text-placeholder);
-    font-style: italic;
-    font-size: 1.15rem;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--border-accent);
-    box-shadow: 0 0 18px 5px var(--shadow-hover);
-    background: rgba(255, 255, 255, 0.12);
-}
+    font-family: var(--
