@@ -43,23 +43,6 @@ body {
     background-attachment: fixed;
 }
 
-/* ----- FONDS DYNAMIQUES ----- */
-.bg-stars {
-    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/stars.gif') center/cover no-repeat fixed;
-}
-
-.bg-nebula {
-    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/nébuleux.gif') center/cover no-repeat fixed;
-}
-
-.bg-galaxy {
-    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/galaxy.gif') center/cover no-repeat fixed;
-}
-
-.bg-guardian {
-    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/gardiens.gif') center/cover no-repeat fixed;
-}
-
 /* ----- EN-TÊTE ----- */
 header {
     background: var(--header-bg-gradient);
@@ -94,6 +77,7 @@ header h1 {
 /* ----- NAVIGATION ----- */
 nav {
     margin-top: 20px;
+    text-align: center;
 }
 
 nav a {
@@ -106,6 +90,7 @@ nav a {
     border-radius: 30px;
     transition: all 0.4s ease;
     border: 2px solid transparent;
+    display: inline-block;
 }
 
 nav a:hover {
@@ -202,6 +187,9 @@ footer {
     box-shadow: 0 0 18px var(--shadow-hover);
     z-index: 9999;
     transition: all 0.3s ease;
+    max-width: 90vw;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .theme-selector label {
@@ -227,16 +215,14 @@ footer {
 
 /* ----- RESPONSIVE DESIGN ----- */
 
-/* Desktop large, nothing special here */
-
+/* Desktop large */
 @media (max-width: 1024px) {
-    /* Pour les écrans intermédiaires un peu plus petits */
     main {
         padding: 50px 30px;
     }
 }
 
-/* Tablettes : 481px à 768px */
+/* Tablettes */
 @media (max-width: 768px) and (min-width: 481px) {
     header h1 {
         font-size: 2.5em;
@@ -264,22 +250,35 @@ footer {
         top: 15px;
         right: 15px;
         padding: 10px 16px;
+        max-width: 80vw;
+        white-space: nowrap;
+        overflow: hidden;
     }
 }
 
-/* Mobile (petites résolutions) - max 480px */
+/* Mobile (petites résolutions) */
 @media (max-width: 480px) {
     header h1 {
         font-size: 2.1em;
         padding: 6px 12px;
     }
 
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
     nav a {
         display: block;
-        margin: 10px auto;
+        margin: 0;
         font-size: 1em;
-        padding: 8px 12px;
+        padding: 8px 16px;
         border-radius: 25px;
+        width: 90%;
+        max-width: 300px;
+        text-align: center;
     }
 
     main {
@@ -303,16 +302,20 @@ footer {
     }
 
     .theme-selector {
-        top: unset;
+        position: fixed;
         bottom: 15px;
         right: 50%;
         transform: translateX(50%);
         padding: 8px 14px;
         border-radius: 12px;
+        max-width: 90vw;
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
     }
 }
 
-/* Montres connectées (smartwatches) - très petites résolutions, max 280px */
+/* Montres connectées (smartwatches) */
 @media (max-width: 280px) {
     header {
         padding: 20px 10px;
@@ -323,74 +326,22 @@ footer {
         padding: 4px 8px;
     }
 
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
     nav a {
         font-size: 0.85em;
-        margin: 6px 8px;
         padding: 6px 10px;
         border-radius: 18px;
+        width: 90%;
+        max-width: 180px;
+        text-align: center;
     }
 
     main {
         padding: 15px 10px;
-        max-width: 100%;
-        border-radius: 10px;
-        font-size: 0.9em;
-    }
-
-    h2 {
-        font-size: 1.4em;
-        margin-bottom: 15px;
-    }
-
-    p, li {
-        font-size: 0.9em;
-    }
-
-    .btn {
-        padding: 8px 15px;
-        font-size: 0.85em;
-    }
-
-    .theme-selector {
-        display: none; /* Optionnel : on masque la sélection de thème sur montre */
-    }
-}
-
-/* ----- FORMULAIRE DE CONTACT ----- */
-.contact-form {
-    max-width: 700px;
-    margin: 0 auto 3rem;
-    background: var(--form-bg);
-    padding: 3rem 4rem;
-    border-radius: 20px;
-    box-shadow: 0 0 70px var(--shadow-hover);
-    backdrop-filter: blur(16px);
-    color: var(--text-main);
-    font-family: var(--font-base);
-    font-size: 1.3rem;
-}
-
-.contact-form .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2.8rem;
-}
-
-.contact-form label {
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-    text-shadow: 0 0 10px var(--border-accent);
-    user-select: none;
-    font-size: 1.2rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    background: rgba(255, 255, 255, 0.1);
-    border: 3px solid transparent;
-    border-radius: 16px;
-    padding: 1.3rem 1.6rem;
-    color: #e0faff;
-    font-size: 1.2rem;
-    font-family: var(--
+        max
