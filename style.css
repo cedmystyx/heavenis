@@ -45,19 +45,19 @@ body {
 
 /* ----- FONDS DYNAMIQUES ----- */
 .bg-stars {
-    background: url('https://giphy.com/gifs/loop-80s-l1J3rGigrYfx8aKqI') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/l1J3rGigrYfx8aKqI/giphy.gif') center/cover no-repeat fixed;
 }
 
 .bg-nebula {
-    background: url('img/nébuleux.gif') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif') center/cover no-repeat fixed;
 }
 
 .bg-galaxy {
-    background: url('img/galaxy.gif') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif') center/cover no-repeat fixed;
 }
 
 .bg-guardian {
-    background: url('img/gardiens.gif') center/cover no-repeat fixed;
+    background: url('https://media.giphy.com/media/3o7TKrK2b1reVUZdGw/giphy.gif') center/cover no-repeat fixed;
 }
 
 /* ----- EN-TÊTE ----- */
