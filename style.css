@@ -44,18 +44,23 @@ body {
 }
 
 /* ----- FONDS DYNAMIQUES ----- */
+
+/* Fond étoiles animées */
 .bg-stars {
     background: url('https://media.giphy.com/media/l1J3rGigrYfx8aKqI/giphy.gif') center/cover no-repeat fixed;
 }
 
+/* Fond nébuleuse */
 .bg-nebula {
     background: url('https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif') center/cover no-repeat fixed;
 }
 
+/* Fond galaxie */
 .bg-galaxy {
     background: url('https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif') center/cover no-repeat fixed;
 }
 
+/* Fond style Gardiens de la Galaxie */
 .bg-guardian {
     background: url('https://media.giphy.com/media/3o7TKrK2b1reVUZdGw/giphy.gif') center/cover no-repeat fixed;
 }
