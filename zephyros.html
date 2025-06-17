@@ -107,25 +107,9 @@
         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
-
-    <div class="footer-bottom" aria-hidden="true">
+    <div class="footer-bottom">
       &copy; 2025 Univers Céleste – Heavenis & Zephyros
     </div>
   </footer>
-
-  <script>
-    // Gestion du thème avec sauvegarde en localStorage
-    const selectTheme = document.getElementById('theme');
-    const savedTheme = localStorage.getItem('preferredTheme') || 'bg-classique';
-    document.body.className = savedTheme;
-    selectTheme.value = savedTheme;
-
-    selectTheme.addEventListener('change', () => {
-      const theme = selectTheme.value;
-      document.body.className = theme;
-      localStorage.setItem('preferredTheme', theme);
-    });
-  </script>
-
 </body>
 </html>
