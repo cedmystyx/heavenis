@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – Univers Céleste</title>
+  <meta name="description"
+    content="Formulaire de contact pour nous poser vos questions ou proposer un partenariat avec Univers Céleste." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Ubuntu&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+
+  <!-- Fond animé -->
+  <div class="particles-bg" aria-hidden="true" tabindex="-1"></div>
+
+  <!-- En-tête -->
+  <header class="header-animated" role="banner">
+    <div class="container">
+      <h1>Univers <span class="gradient-text">Céleste</span></h1>
+      <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <a href="index.html">Accueil</a>
+        <a href="heavenis.html">Heavenis</a>
+        <a href="zephyros.html">Zephyros</a>
+        <a href="histoire.html">Histoire</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="main-highlight" role="main">
+    <section class="contact-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Nous contacter</h2>
+      <p>Une question, une suggestion ou un partenariat ? Envoyez-nous un message via ce formulaire :</p>
+
+      <form class="contact-form" action="#" method="post" novalidate aria-describedby="form-message">
+        <div class="form-group">
+          <label for="nom">Nom <span aria-hidden="true">*</span></label>
+          <input id="nom" name="nom" type="text" required aria-required="true" placeholder="Votre nom complet" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" required aria-required="true" placeholder="votre.email@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="6" required aria-required="true" placeholder="Votre message ici..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Envoyer</button>
+          <button type="reset" class="btn btn-secondary" aria-label="Réinitialiser le formulaire">Réinitialiser</button>
+        </div>
+
+        <div id="form-message" role="alert" aria-live="polite" class="form-feedback" hidden></div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Sélecteur de thème -->
+  <aside class="theme-selector" aria-label="Sélecteur de thème">
+    <label for="theme">Thème :</label>
+    <select id="theme" onchange="changeTheme(this.value)" aria-controls="page-theme">
+      <option value="">Classique</option>
+      <option value="bg-stars">Étoiles</option>
+      <option value="bg-nebula">Nébuleuse</option>
+      <option value="bg-galaxy">Galaxie</option>
+      <option value="bg-guardian">Gardien de la Galaxie</option>
+    </select>
+  </aside>
+
+  <!-- Pied de page -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-column">
+        <p>Deux royaumes, un seul univers. Céleste, mystique et stratégique.</p>
+      </div>
+
+      <nav class="footer-column" aria-label="Navigation secondaire">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="heavenis.html">Heavenis</a></li>
+          <li><a href="zephyros.html">Zephyros</a></li>
+          <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-column social-icons" role="complementary" aria-label="Réseaux sociaux">
+        <a href="#" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 Univers Céleste – Heavenis & Zephyros
+    </div>
+  </footer>
+
+  <script>
+    function changeTheme(themeClass) {
+      document.body.className = themeClass;
+    }
+  </script>
+
+</body>
+
+</html>

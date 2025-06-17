@@ -1,0 +1,308 @@
+/* ----- VARIABLES CSS ----- */
+:root {
+    --main-bg: linear-gradient(145deg, #020d19, #0a1c2e);
+    --header-glow-start: #a8f0ff;
+    --header-glow-end: #c5faff;
+    --header-shadow-start: #70e0ff;
+    --header-shadow-end: #5ad3f2;
+    --header-text-color: #e3fcff;
+    --header-bg-gradient: linear-gradient(to right, rgba(0, 30, 60, 0.75), rgba(0, 45, 75, 0.75), rgba(0, 60, 90, 0.75));
+    --border-accent: #58e3ff;
+    --form-bg: rgba(0, 30, 60, 0.75);
+    --btn-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+    --btn-gradient-hover: linear-gradient(135deg, #00d4ff, #008cff);
+    --text-main: #d7f9ff;
+    --text-secondary: #a2f4ff;
+    --text-placeholder: #bdefffcc;
+    --shadow-main: rgba(0, 195, 255, 0.4);
+    --shadow-hover: rgba(0, 225, 255, 0.6);
+    --font-title: 'Orbitron', sans-serif;
+    --font-base: 'Ubuntu', sans-serif;
+}
+
+/* ----- POLICES ----- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Ubuntu&display=swap');
+
+/* ----- RESET ET BASE ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-base);
+    background: var(--main-bg);
+    color: #f0faff;
+    min-height: 100vh;
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: background 0.6s ease, color 0.3s ease;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* ----- FONDS DYNAMIQUES ----- */
+.bg-stars {
+    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/stars.gif') center/cover no-repeat fixed;
+}
+
+.bg-nebula {
+    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/nébuleux.gif') center/cover no-repeat fixed;
+}
+
+.bg-galaxy {
+    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/galaxy.gif') center/cover no-repeat fixed;
+}
+
+.bg-guardian {
+    background: url('C:/Users/miotc/OneDrive/Documents/zephyros-site/img/gardiens.gif') center/cover no-repeat fixed;
+}
+
+/* ----- EN-TÊTE ----- */
+header {
+    background: var(--header-bg-gradient);
+    padding: 35px 20px;
+    box-shadow: 0 8px 30px var(--shadow-main);
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--border-accent);
+    backdrop-filter: blur(8px);
+}
+
+header h1 {
+    font-family: var(--font-title);
+    font-size: 3.4em;
+    color: var(--header-text-color);
+    text-shadow: 0 0 20px var(--header-shadow-start), 0 0 40px var(--header-shadow-end);
+    animation: glowPulse 3s infinite alternate;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* ----- ANIMATIONS HEADER ----- */
+@keyframes glowPulse {
+    0%   { text-shadow: 0 0 10px var(--header-glow-start), 0 0 20px var(--border-accent); }
+    100% { text-shadow: 0 0 25px var(--header-glow-end), 0 0 50px var(--border-accent); }
+}
+
+/* ----- NAVIGATION ----- */
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    color: #a8faff;
+    text-decoration: none;
+    margin: 0 18px;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: var(--border-accent);
+    box-shadow: 0 0 15px var(--shadow-hover);
+}
+
+/* ----- CONTENU PRINCIPAL ----- */
+main {
+    padding: 70px 40px;
+    max-width: 1150px;
+    margin: auto;
+    background: rgba(0, 20, 35, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 0 80px var(--shadow-main);
+    backdrop-filter: blur(14px);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #e0f9ff;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--border-accent);
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px var(--header-shadow-end);
+}
+
+p, li {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+/* ----- LISTES ----- */
+ul {
+    padding-left: 25px;
+}
+
+ul li::marker {
+    color: var(--text-secondary);
+}
+
+/* ----- BOUTONS ----- */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--btn-gradient);
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px var(--shadow-main);
+    margin-top: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--btn-gradient-hover);
+    box-shadow: 0 0 35px var(--shadow-hover);
+    transform: scale(1.07);
+}
+
+/* ----- PIED DE PAGE ----- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(0, 20, 35, 0.6);
+    color: #d0f6ff;
+    font-size: 1em;
+    margin-top: 80px;
+    border-top: 2px solid var(--border-accent);
+    box-shadow: inset 0 4px 12px rgba(0, 150, 255, 0.2);
+    backdrop-filter: blur(6px);
+}
+
+/* ----- SÉLECTEUR DE THÈME ----- */
+.theme-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 35, 60, 0.9);
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 0 18px var(--shadow-hover);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.theme-selector label {
+    color: #eee;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.theme-selector select {
+    background: #003c5a;
+    color: #fff;
+    border: 1px solid var(--border-accent);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.theme-selector select:hover {
+    background: #005b88;
+}
+
+/* ----- RESPONSIVE DESIGN ----- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.3em;
+    }
+
+    nav a {
+        display: block;
+        margin: 12px auto;
+        text-align: center;
+    }
+
+    main {
+        padding: 30px 20px;
+    }
+
+    .theme-selector {
+        top: unset;
+        bottom: 20px;
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
+
+/* ----- FORMULAIRE DE CONTACT ----- */
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    background: var(--form-bg);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 0 70px var(--shadow-hover);
+    backdrop-filter: blur(16px);
+    color: var(--text-main);
+    font-family: var(--font-base);
+    font-size: 1.3rem;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.8rem;
+}
+
+.contact-form label {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    text-shadow: 0 0 10px var(--border-accent);
+    user-select: none;
+    font-size: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid transparent;
+    border-radius: 16px;
+    padding: 1.3rem 1.6rem;
+    color: #e0faff;
+    font-size: 1.2rem;
+    font-family: var(--font-base);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical;
+    min-height: 55px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-placeholder);
+    font-style: italic;
+    font-size: 1.15rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--border-accent);
+    box-shadow: 0 0 18px 5px var(--shadow-hover);
+    background: rgba(255, 255, 255, 0.12);
+}

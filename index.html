@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accueil - Univers Céleste</title>
+  <meta name="description" content="Explorez Heavenis et Zephyros, deux royaumes mystiques de l'Univers Céleste." />
+  <meta name="author" content="Univers Céleste" />
+  <meta name="theme-color" content="#2c2f48" />
+
+  <!-- Préchargement et optimisation des polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Ubuntu&display=swap" rel="stylesheet" />
+
+  <!-- Feuille de style externe -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- FontAwesome icônes -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+</head>
+<body class="bg-stars">
+
+  <!-- Fond animé galactique (sera géré par CSS/JS externe) -->
+  <div class="particles-bg" aria-hidden="true"></div>
+
+  <!-- En-tête principal -->
+  <header class="header-animated" role="banner">
+    <div class="container">
+      <h1><span class="gradient-text">Univers Céleste</span></h1>
+      <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <a href="index.html" class="active" aria-current="page">Accueil</a>
+        <a href="heavenis.html">Heavenis</a>
+        <a href="zephyros.html">Zephyros</a>
+        <a href="histoire.html">Histoire</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="main-highlight" role="main">
+    <section class="intro">
+      <div class="container">
+        <h2>Bienvenue dans l'<span class="gradient-text">Univers Céleste</span></h2>
+        <p>Explore un monde divisé entre deux puissances cosmiques :</p>
+
+        <div class="univers-cards">
+          <article class="card heavenis-card" tabindex="0" aria-labelledby="heavenis-title" role="region">
+            <h3 id="heavenis-title">Heavenis</h3>
+            <p>Un sanctuaire mystique et lumineux, centré sur l'harmonie, l'évolution et la magie céleste.</p>
+            <a href="heavenis.html" class="btn" role="button" aria-label="Explorer Heavenis">Explorer Heavenis</a>
+          </article>
+
+          <article class="card zephyros-card" tabindex="0" aria-labelledby="zephyros-title" role="region">
+            <h3 id="zephyros-title">Zephyros</h3>
+            <p>Un royaume sauvage et chaotique, où le vent du combat et de la stratégie souffle sans relâche.</p>
+            <a href="zephyros.html" class="btn" role="button" aria-label="Plonger dans Zephyros">Plonger dans Zephyros</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sélecteur de thème -->
+  <aside class="theme-selector" aria-label="Sélecteur de thème">
+    <label for="theme">Thème :</label>
+    <select id="theme" onchange="changeTheme(this.value)" aria-controls="page-theme">
+      <option value="">Classique</option>
+      <option value="bg-stars">Étoiles</option>
+      <option value="bg-nebula">Nébuleuse</option>
+      <option value="bg-galaxy">Galaxie</option>
+      <option value="bg-guardian">Gardien de la Galaxie</option>
+    </select>
+  </aside>
+
+  <!-- Pied de page -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container container">
+      <div class="footer-column">
+        <p>Deux royaumes, un seul univers. Céleste, mystique et stratégique.</p>
+      </div>
+      <nav class="footer-column" aria-label="Navigation pied de page">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="heavenis.html">Heavenis</a></li>
+          <li><a href="zephyros.html">Zephyros</a></li>
+          <li><a href="histoire.html">Histoire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+      <div class="footer-column social-icons" aria-label="Réseaux sociaux">
+        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom" aria-hidden="true">
+      &copy; 2025 Univers Céleste – Heavenis & Zephyros
+    </div>
+  </footer>
+
+  <!-- Script de changement de thème -->
+  <script>
+    function changeTheme(themeClass) {
+      document.body.className = themeClass;
+      // Sauvegarde du choix dans localStorage
+      try {
+        localStorage.setItem('preferredTheme', themeClass);
+      } catch (e) {}
+    }
+
+    // Chargement du thème sauvegardé
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const savedTheme = localStorage.getItem('preferredTheme');
+        if (savedTheme) {
+          document.body.className = savedTheme;
+          const themeSelect = document.getElementById('theme');
+          if (themeSelect) themeSelect.value = savedTheme;
+        }
+      } catch (e) {}
+    });
+  </script>
+
+</body>
+</html>

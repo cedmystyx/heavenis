@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zephyros - Univers Céleste</title>
+  <meta name="description" content="Zephyros, un monde libre et chaotique dans l'univers céleste Minecraft. Modes de jeu variés, communauté active et aventure sans limites." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Ubuntu&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+</head>
+<body itemscope itemtype="https://schema.org/GameServer">
+  <!-- Fond animé -->
+  <div class="particles-bg" aria-hidden="true"></div>
+
+  <!-- En-tête -->
+  <header class="header-animated" role="banner">
+    <div class="container">
+      <h1 itemprop="name">Univers <span class="gradient-text">Céleste</span></h1>
+      <nav class="navbar" role="navigation" aria-label="Menu principal">
+        <a href="index.html">Accueil</a>
+        <a href="heavenis.html">Heavenis</a>
+        <a href="zephyros.html" class="active" aria-current="page">Zephyros</a>
+        <a href="histoire.html">Histoire</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main role="main" class="container">
+    <article itemprop="gameServerDescription" itemscope itemtype="https://schema.org/GameServer">
+      <section class="intro" aria-labelledby="intro-title">
+        <h2 id="intro-title">🌪️ Zephyros - Le Vent du Chaos</h2>
+        <p><strong itemprop="name">Zephyros</strong> est un serveur Minecraft libre et sans scénario imposé, où tu explores trois mondes uniques depuis un lobby central.</p>
+        <p>Aucun script. Aucune contrainte. Juste toi, les autres joueurs… et la survie.</p>
+      </section>
+
+      <section class="features" aria-labelledby="features-title">
+        <h3 id="features-title">🎮 Modes de jeu disponibles</h3>
+        <ul>
+          <li><strong>🌍 Monde Survie</strong> : Collecte, construis, explore… ou domine.</li>
+          <li><strong>⚔️ PvP</strong> : Affronte d’autres joueurs dans des arènes sans règles.</li>
+          <li><strong>🏃 Deathrun</strong> : Teste tes réflexes dans des parcours extrêmes.</li>
+          <li><strong>🏰 Lobby</strong> : Simple et rapide, il te connecte à chaque mode.</li>
+        </ul>
+      </section>
+
+      <section class="systems" aria-labelledby="systems-title">
+        <h3 id="systems-title">🛠️ Systèmes & Économie</h3>
+        <ul>
+          <li><strong>💰 Shop & Économie</strong> : Gagne de l'argent via les métiers et dépense-le dans un <strong>shop complet</strong>.</li>
+          <li><strong>💼 Système de métiers</strong> : Mineur, chasseur, pêcheur… chaque métier te donne des gains et de l’expérience.</li>
+          <li><strong>🔁 Échanges entre joueurs</strong> : Propose des <strong>échanges d'objets ou d'argent</strong> en toute sécurité grâce à un système automatisé.</li>
+        </ul>
+      </section>
+
+      <section class="join-server" aria-labelledby="join-title">
+        <h3 id="join-title">🚀 Rejoins l'aventure</h3>
+        <p><strong>🎮 IP Minecraft :</strong> <code itemprop="serverStatus" aria-label="Adresse IP du serveur Minecraft">45.145.167.141:25569</code></p>
+        <p><strong>💬 Discord :</strong> 
+          <a href="https://discord.gg/sHTvksWpYq" target="_blank" rel="noopener noreferrer" aria-label="Lien vers Discord Univers Céleste">
+            https://discord.gg/sHTvksWpYq
+          </a>
+        </p>
+      </section>
+    </article>
+
+    <nav class="cta-container" aria-label="Navigation secondaire">
+      <a href="index.html" class="btn" role="button" aria-label="Retour à l'accueil">⬅️ Retour à l'accueil</a>
+      <a href="heavenis.html" class="btn-alt" role="button" aria-label="Explorer Heavenis">✨ Explorer Heavenis</a>
+    </nav>
+  </main>
+
+  <!-- Sélecteur de thème -->
+  <aside class="theme-selector" aria-label="Sélecteur de thème">
+    <label for="theme">Thème :</label>
+    <select id="theme" onchange="changeTheme(this.value)" aria-controls="page-theme">
+      <option value="">Classique</option>
+      <option value="bg-stars">Étoiles</option>
+      <option value="bg-nebula">Nébuleuse</option>
+      <option value="bg-galaxy">Galaxie</option>
+      <option value="bg-guardian">Gardien de la Galaxie</option>
+    </select>
+  </aside>
+
+  <!-- Bouton Retour en haut -->
+  <button id="back-to-top" aria-label="Retour en haut" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Pied de page -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container container">
+      <div class="footer-column">
+        <p>Deux royaumes, un seul univers. Céleste, mystique et stratégique.</p>
+      </div>
+
+      <nav class="footer-column" aria-label="Navigation pied de page">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="heavenis.html" class="active" aria-current="page">Heavenis</a></li>
+          <li><a href="zephyros.html">Zephyros</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-column social-icons" aria-label="Réseaux sociaux">
+        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom" aria-hidden="true">
+      &copy; 2025 Univers Céleste – Heavenis & Zephyros
+    </div>
+  </footer>
+
+  <script>
+    // Gestion du thème avec sauvegarde en localStorage
+    const selectTheme = document.getElementById('theme');
+    const savedTheme = localStorage.getItem('preferredTheme') || 'bg-classique';
+    document.body.className = savedTheme;
+    selectTheme.value = savedTheme;
+
+    selectTheme.addEventListener('change', () => {
+      const theme = selectTheme.value;
+      document.body.className = theme;
+      localStorage.setItem('preferredTheme', theme);
+    });
+  </script>
+
+</body>
+</html>
