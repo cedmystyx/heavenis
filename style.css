@@ -44,23 +44,15 @@ body {
 }
 
 /* ----- FONDS DYNAMIQUES ----- */
-
-/* Fond étoiles animées */
 .bg-stars {
     background: url('https://media.giphy.com/media/l1J3rGigrYfx8aKqI/giphy.gif') center/cover no-repeat fixed;
 }
-
-/* Fond nébuleuse (issue de la NASA/JPL) */
 .bg-nebula {
     background: url('https://media.giphy.com/media/3o752ou642xf3N5gkw/giphy.gif') center/cover no-repeat fixed;
 }
-
-/* Fond galaxie (loop style universel) */
 .bg-galaxy {
     background: url('https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif') center/cover no-repeat fixed;
 }
-
-/* Fond style Gardiens de la Galaxie (Baby Groot dansant) */
 .bg-guardian {
     background: url('https://media.giphy.com/media/3oEdv5XB9XlYRi5Fzq/giphy.gif') center/cover no-repeat fixed;
 }
@@ -158,38 +150,6 @@ p, li {
     color: var(--text-main);
 }
 
-/* ----- LISTES ----- */
-ul {
-    padding-left: 25px;
-}
-
-ul li::marker {
-    color: var(--text-secondary);
-}
-
-/* ----- BOUTONS ----- */
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background: var(--btn-gradient);
-    color: white;
-    text-decoration: none;
-    border-radius: 40px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 25px var(--shadow-main);
-    margin-top: 20px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
-.btn:hover {
-    background: var(--btn-gradient-hover);
-    box-shadow: 0 0 35px var(--shadow-hover);
-    transform: scale(1.07);
-}
-
 /* ----- PIED DE PAGE ----- */
 footer {
     text-align: center;
@@ -243,8 +203,6 @@ footer {
 }
 
 /* ----- RESPONSIVE DESIGN ----- */
-
-/* Tablettes et petits desktops */
 @media (max-width: 1024px) {
     main {
         padding: 50px 30px;
@@ -257,10 +215,6 @@ footer {
         font-size: 1.1em;
         padding: 10px 16px;
     }
-    .btn {
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
     .theme-selector {
         top: 15px;
         right: 15px;
@@ -269,7 +223,6 @@ footer {
     }
 }
 
-/* Tablettes (481px à 768px) */
 @media (max-width: 768px) and (min-width: 481px) {
     header h1 {
         font-size: 2.5em;
@@ -287,9 +240,7 @@ footer {
         max-width: 95%;
         border-radius: 15px;
     }
-    .btn {
-        padding: 11px 22px;
-        font-size: 1em;
-    }
     .theme-selector {
-       
+        /* continue selon besoin */
+    }
+}
