@@ -96,34 +96,85 @@
     </section>
   </main>
 
-  <!-- Pied de page -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer-container">
-      <div class="footer-column">
-        <p>Deux royaumes, un seul univers. Céleste, mystique et stratégique.</p>
-      </div>
-      <div class="footer-column">
-        <nav aria-label="Liens du pied de page">
-          <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="heavenis.html">Heavenis</a></li>
-            <li><a href="zephyros.html">Zephyros</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="mentions-legales.html" class="active" aria-current="page">Mentions légales</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-column">
-        <div class="social-icons">
-          <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
+<footer class="py-5" style="background: linear-gradient(135deg, #1e1e3f, #2a2a6a); color: #cdd6f4; position: relative; overflow: hidden;">
+  <!-- Fond étoilé léger -->
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat; opacity: 0.1;"></div>
+
+  <div class="footer container position-relative" style="z-index: 10;">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4 gap-md-0 mb-4">
+      <a href="/" class="d-flex align-items-center gap-3 text-decoration-none">
+        <img src="https://tonsite.com/assets/logo.png" height="60" alt="Logo" style="filter: drop-shadow(0 0 6px #6c63ff);" />
+        <span style="font-size: 1.4rem; font-weight: 700; letter-spacing: 1.5px; color: #a0a6ff;">Universe Céleste</span>
+      </a>
+
+      <div class="d-flex gap-4">
+        <a href="https://discord.gg/tonserveur" target="_blank" rel="noopener noreferrer" aria-label="Discord"
+          class="social-icon" style="color:#5865f2; font-size: 1.8rem; transition: transform 0.3s ease;">
+          <i class="bi bi-discord"></i>
+        </a>
+        <a href="https://www.youtube.com/tonchaine" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+          class="social-icon" style="color:#ff0000; font-size: 1.8rem; transition: transform 0.3s ease;">
+          <i class="bi bi-youtube"></i>
+        </a>
       </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2025 Univers Céleste – Heavenis & Zephyros
+
+    <div class="d-flex flex-wrap justify-content-center gap-5 mb-4">
+      <div>
+        <h3 class="text-uppercase fw-bold mb-3" style="color: #8a8fff;">Universe Céleste</h3>
+        <ul class="list-unstyled" style="line-height: 2;">
+          <li><a href="/" class="footer-link">Accueil</a></li>
+          <li><a href="/heavenis" class="footer-link">Heavenis</a></li>
+          <li><a href="/zephyros" class="footer-link">Zephyros</a></li>
+          <li><a href="/contact" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
+
+    <div class="d-flex justify-content-between align-items-center flex-column flex-md-row gap-3" style="border-top: 1px solid #444670; padding-top: 15px;">
+      <ul class="list-unstyled d-flex m-0 gap-3">
+        <li>
+          <a href="/profile/theme" class="theme-toggle" data-theme-value="light" title="Thème clair" data-bs-toggle="tooltip" aria-label="Thème clair">
+            <i class="bi bi-sun" style="font-size: 1.3rem; color: #f5c518;"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/profile/theme" class="theme-toggle" data-theme-value="dark" title="Thème sombre" data-bs-toggle="tooltip" aria-label="Thème sombre">
+            <i class="bi bi-moon-stars" style="font-size: 1.3rem; color: #94a3b8;"></i>
+          </a>
+        </li>
+      </ul>
+      <p class="text-center text-md-end m-0" style="font-size: 0.85rem; color: #8a8aff;">
+        © 2025 Universe Céleste - Heavenis & Zephyros
+        <a href="https://discord.gg/tondiscord" target="_blank" rel="noopener noreferrer" style="color:#a0a6ff; text-decoration: underline;">Zephyros</a> |
+      </p>
+    </div>
+  </div>
+
+  <style>
+    .footer-link {
+      color: #cdd6f4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-link:hover {
+      color: #6c63ff;
+      text-decoration: underline;
+    }
+    .social-icon:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 6px currentColor);
+    }
+    .theme-toggle:hover {
+      cursor: pointer;
+      filter: drop-shadow(0 0 6px currentColor);
+    }
+    @media (max-width: 576px) {
+      .footer-link {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</footer>
 </body>
 </html>
