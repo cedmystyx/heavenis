@@ -161,3 +161,48 @@ h1.glitch::after {
     top: 30vh;
   }
 }
+
+/* Menu console spécifique */
+#console-menu ul {
+  list-style: none;
+  margin: 2rem 0 3rem;
+  padding: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #0ff;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #0ff88;
+  background: rgba(0, 15, 30, 0.75);
+  user-select: none;
+}
+
+#console-menu li {
+  padding: 15px 25px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0ff;
+  cursor: pointer;
+  border-bottom: 1px solid #0ff22;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#console-menu li:last-child {
+  border-bottom: none;
+}
+
+#console-menu li:focus,
+#console-menu li:hover {
+  background-color: #00ffffbb;
+  color: #001f33;
+  outline: none;
+}
+
+.console-instruction {
+  max-width: 400px;
+  margin: 0 auto;
+  color: #55ffffcc;
+  font-size: 1rem;
+  font-style: italic;
+  user-select: none;
+}
