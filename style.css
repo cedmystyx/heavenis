@@ -17,6 +17,7 @@ html, body {
   cursor: crosshair;
   color: #0ff;
   user-select: none;
+  
   /* Ajout centrage vertical et horizontal via flex */
   display: flex;
   justify-content: center;
