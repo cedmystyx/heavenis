@@ -22,7 +22,7 @@ html, body {
 /* Canvas container */
 #canvas-container {
   position: fixed;
-  inset: 0;
+  inset: 0; /* équivaut à top:0; right:0; bottom:0; left:0; */
   z-index: 0;
 }
 
@@ -54,10 +54,12 @@ h1.glitch::before,
 h1.glitch::after {
   content: attr(data-text);
   position: absolute;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   width: 100%;
   opacity: 0.7;
   clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  pointer-events: none; /* éviter que les pseudo-éléments gênent la souris */
 }
 
 h1.glitch::before {
@@ -104,7 +106,8 @@ h1.glitch::after {
   box-shadow: 0 0 12px #00ffff77;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   background: #00ffff44;
   box-shadow: 0 0 20px #00ffffbb;
   outline: none;
@@ -116,32 +119,62 @@ h1.glitch::after {
   box-shadow: 0 0 20px #f0f7;
 }
 
-.btn-primary:hover, .btn-primary:focus {
+.btn-primary:hover,
+.btn-primary:focus {
   background: #f0f45544;
   box-shadow: 0 0 30px #f0f7;
 }
 
 /* Animations */
 @keyframes glitchTop {
-  0% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(0); }
-  50% { clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); transform: translate(-2px, -2px); }
-  100% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(0); }
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(0);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(0);
+  }
 }
 
 @keyframes glitchBottom {
-  0% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translate(0); }
-  50% { clip-path: polygon(0 45%, 100% 45%, 100% 90%, 0 90%); transform: translate(2px, 2px); }
-  100% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); transform: translate(0); }
+  0% {
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    transform: translate(0);
+  }
+  50% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 90%, 0 90%);
+    transform: translate(2px, 2px);
+  }
+  100% {
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    transform: translate(0);
+  }
 }
 
 @keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 @keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px);}
-  100% { opacity: 1; transform: translateY(0);}
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive */
