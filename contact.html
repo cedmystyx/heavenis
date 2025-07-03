@@ -1,95 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact – Univers Céleste</title>
-  <meta name="description"
-    content="Formulaire de contact pour nous poser vos questions ou proposer un partenariat avec Univers Céleste." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Ubuntu&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+  <link rel="stylesheet" href="style-contact.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
 </head>
+<body>
+  <div class="particles-bg"></div>
+  <section class="content">
+    <h1 class="glitch" data-text="Contact">Contact</h1>
+    <p class="subtitle">Une question, une suggestion ou un partenariat ? Écrivez-nous ici :</p>
 
-<body class="contact">
+    <form class="contact-form" action="#" method="post" novalidate>
+      <div class="form-group">
+        <label for="nom">Nom <span>*</span></label>
+        <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required />
+      </div>
 
-  <!-- Fond animé -->
-  <div class="particles-bg" aria-hidden="true" tabindex="-1"></div>
+      <div class="form-group">
+        <label for="email">Email <span>*</span></label>
+        <input type="email" id="email" name="email" placeholder="votre.email@example.com" required />
+      </div>
 
-  <!-- En-tête -->
-  <header class="header-animated" role="banner">
-    <div class="container">
-      <h1>Univers <span class="gradient-text">Céleste</span></h1>
-      <nav class="navbar" role="navigation" aria-label="Menu principal">
-        <a href="index.html">Accueil</a>
-        <a href="heavenis.html">Heavenis</a>
-        <a href="zephyros.html">Zephyros</a>
-        <a href="histoire.html">Histoire</a>
-        <a href="contact.html" class="active" aria-current="page">Contact</a>
-        <a href="mentions-legales.html">Mentions légales</a>
-      </nav>
-    </div>
-  </header>
+      <div class="form-group">
+        <label for="message">Message <span>*</span></label>
+        <textarea id="message" name="message" rows="6" placeholder="Votre message ici..." required></textarea>
+      </div>
 
-  <!-- Contenu principal -->
-  <main class="main-highlight" role="main">
-    <section class="contact-section" aria-labelledby="contact-title">
-      <h2 id="contact-title">Nous contacter</h2>
-      <p>Une question, une suggestion ou un partenariat ? Envoyez-nous un message via ce formulaire :</p>
-
-      <form class="contact-form" action="#" method="post" novalidate aria-describedby="form-message">
-        <div class="form-group">
-          <label for="nom">Nom <span aria-hidden="true">*</span></label>
-          <input id="nom" name="nom" type="text" required aria-required="true" placeholder="Votre nom complet" />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email <span aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="email" required aria-required="true" placeholder="votre.email@example.com" />
-        </div>
-
-        <div class="form-group">
-          <label for="message">Message <span aria-hidden="true">*</span></label>
-          <textarea id="message" name="message" rows="6" required aria-required="true" placeholder="Votre message ici..."></textarea>
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" class="btn">Envoyer</button>
-          <button type="reset" class="btn btn-secondary" aria-label="Réinitialiser le formulaire">Réinitialiser</button>
-        </div>
-
-        <div id="form-message" role="alert" aria-live="polite" class="form-feedback" hidden></div>
-      </form>
-    </section>
-  </main>
-
-<footer style="color: #cdd6f4; padding: 20px 10px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <a href="/" style="color: #a0a6ff; font-weight: 700; font-size: 1.3rem; text-decoration: none; letter-spacing: 1px;">
-    Universe Céleste - Heavenis & Zephyros
-  </a>
-
-  <nav style="margin: 15px 0;">
-    <a href="/" style="color: #cdd6f4; margin: 0 10px; text-decoration: none; font-weight: 500;">Accueil</a>
-    <a href="/heavenis" style="color: #cdd6f4; margin: 0 10px; text-decoration: none; font-weight: 500;">Heavenis</a>
-    <a href="/zephyros" style="color: #cdd6f4; margin: 0 10px; text-decoration: none; font-weight: 500;">Zephyros</a>
-    <a href="/contact" style="color: #cdd6f4; margin: 0 10px; text-decoration: none; font-weight: 500;">Contact</a>
-  </nav>
-
-  <div style="margin-bottom: 10px;">
-    <a href="https://discord.gg/sHTvksWpYq" target="_blank" style="color: #5865f2; margin: 0 8px; font-size: 1.4rem; text-decoration: none;" aria-label="Discord" title="Discord">
-      Discord
-    </a>
-    <a href="https://www.youtube.com/channel/UCJOjYdmH8fyI4qQ1CjpABHQ" target="_blank" style="color: #ff0000; margin: 0 8px; font-size: 1.4rem; text-decoration: none;" aria-label="YouTube" title="YouTube">
-      YouTube
-    </a>
-  </div>
-
-  <small style="color: #8a8aff; font-size: 0.8rem;">
-    © 2025 Universe Céleste - Heavenis & Zephyros | Propulsé par <a href="https://azuriom.com" target="_blank" style="color:#a0a6ff; text-decoration: none;">Azuriom</a>
-  </small>
-</footer>
+      <div class="form-actions">
+        <button type="submit" class="btn">Envoyer</button>
+        <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+      </div>
+    </form>
+  </section>
 </body>
 </html>
