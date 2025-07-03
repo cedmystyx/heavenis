@@ -307,25 +307,91 @@ body.zephyros #console-menu li:hover {
   color: #001100;
 }
 
-/* HEAVENIS PAGE */
+/* HEAVENIS PAGE améliorée */
 body.heavenis {
-  background: radial-gradient(circle at center, #110022 0%, #000011 90%);
+  background: linear-gradient(135deg, #1a0033 0%, #000011 70%);
   color: #aa55ff;
+  position: relative;
+  overflow: hidden;
 }
+
+body.heavenis::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(170,85,255,0.05),
+    rgba(170,85,255,0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 1;
+  animation: scanlines 5s linear infinite;
+}
+
 body.heavenis h1.glitch {
   color: #aa55ff;
+  font-size: 5rem;
+  letter-spacing: 12px;
+  text-shadow:
+    0 0 10px #aa55ff,
+    0 0 20px #bb66ff,
+    0 0 30px #cc77ff;
 }
-body.heavenis #console-menu ul {
-  border-color: #aa55ff;
-  box-shadow: 0 0 30px #aa55ffaa;
+
+body.heavenis .subtitle {
+  color: #cc99ffcc;
+  text-shadow: 0 0 12px #bb77ffbb;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-top: 20px;
 }
-body.heavenis #console-menu li {
-  border-color: #aa55ffcc;
+
+body.heavenis .content {
+  background: rgba(30, 0, 60, 0.7);
+  border: 2px solid #aa55ff88;
+  border-radius: 30px;
+  box-shadow:
+    0 0 10px #aa55ffcc,
+    0 0 30px #aa55ff66 inset;
+  backdrop-filter: blur(12px);
+  padding: 3rem 2rem;
+  max-width: 900px;
+  position: relative;
+  z-index: 10;
+}
+
+body.heavenis .btn {
   color: #aa55ff;
+  border: 2.5px solid #aa55ff;
+  background: transparent;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #aa55ff77;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease, color 0.3s ease;
+  cursor: pointer;
 }
-body.heavenis #console-menu li:hover {
-  background-color: #aa55ffbb;
-  color: #110022;
+
+body.heavenis .btn:hover,
+body.heavenis .btn:focus {
+  background-color: #aa55ff22;
+  box-shadow:
+    0 0 20px #bb66ff,
+    0 0 40px #cc77ff;
+  color: #fff;
+  outline: none;
+}
+
+/* Réutilisation des animations existantes */
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
 }
 
 /* MENTIONS LEGALES PAGE */
