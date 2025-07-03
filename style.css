@@ -17,6 +17,10 @@ html, body {
   cursor: crosshair;
   color: #0ff;
   user-select: none;
+  /* Ajout centrage vertical et horizontal via flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Canvas container */
@@ -34,7 +38,7 @@ html, body {
   padding: 3rem 1rem;
   max-width: 900px;
   margin: 0 auto;
-  top: 35vh;
+  /* Suppression de top: 35vh; car inutile avec flex centré */
   animation: fadeInUp 2s ease forwards;
 }
 
@@ -189,20 +193,14 @@ h1.glitch::after {
     margin: 0 0.5rem;
     font-size: 1rem;
   }
-
-  .content {
-    top: 30vh;
-  }
 }
 
 /* Menu console spécifique */
 #console-menu ul {
   list-style: none;
-  margin: 2rem 0 3rem;
+  margin: 2rem auto 3rem auto; /* correction margin : top et bottom, centré horizontal */
   padding: 0;
   max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
   border: 2px solid #0ff;
   border-radius: 15px;
   box-shadow: 0 0 30px #0ff88;
