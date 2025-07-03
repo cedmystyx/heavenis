@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>À propos – Univers Céleste</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Style -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- JS (fond 3D + console menu) -->
+  <script type="module" src="main.js" defer></script>
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <main class="content" role="main" aria-label="Menu console univers céleste">
+    <h1 class="glitch" data-text="MENU CONSOLE">MENU CONSOLE</h1>
+    <p class="console-instruction" aria-live="polite">
+      Utilise les flèches ↑ ↓ pour naviguer et Entrée pour valider.
+    </p>
+
+    <nav id="console-menu" role="menu" aria-label="Navigation menu console">
+      <ul>
+        <li role="menuitem" tabindex="0" data-href="histoire.html">Histoire</li>
+        <li role="menuitem" tabindex="-1" data-href="contact.html">Contact</li>
+        <li role="menuitem" tabindex="-1" data-href="zephyros.html">Zephyros</li>
+        <li role="menuitem" tabindex="-1" data-href="heavenis.html">Heavenis</li>
+        <li role="menuitem" tabindex="-1" data-href="mentions-legales.html">Mentions légales</li>
+      </ul>
+    </nav>
+
+    <nav class="buttons" aria-label="Navigation secondaire">
+      <a href="index.html" class="btn" role="button">Accueil</a>
+    </nav>
+  </main>
+
+  <script>
+    // Script console-menu clavier accessible et UX
+
+    const menu = document.getElementById('console-menu');
+    const items = menu.querySelectorAll('li[role="menuitem"]');
+    let currentIndex = 0;
+
+    // Focus initial sur le premier item
+    items[currentIndex].tabIndex = 0;
+    items[currentIndex].focus();
+
+    function updateFocus(newIndex) {
+      if (newIndex < 0) newIndex = items.length - 1;
+      if (newIndex >= items.length) newIndex = 0;
+
+      items[currentIndex].tabIndex = -1;
+      items[newIndex].tabIndex = 0;
+      items[newIndex].focus();
+      currentIndex = newIndex;
+    }
+
+    menu.addEventListener('keydown', e => {
+      switch(e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          updateFocus(currentIndex + 1);
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          updateFocus(currentIndex - 1);
+          break;
+        case 'Enter':
+          e.preventDefault();
+          const href = items[currentIndex].dataset.href;
+          if(href) window.location.href = href;
+          break;
+        case 'Escape':
+          e.preventDefault();
+          window.location.href = 'index.html';
+          break;
+      }
+    });
+
+    // Clic souris aussi redirige
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        window.location.href = item.dataset.href;
+      });
+      item.addEventListener('mouseenter', () => {
+        updateFocus(i);
+      });
+    });
+  </script>
+</body>
+</html>
