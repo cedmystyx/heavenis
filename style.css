@@ -545,3 +545,61 @@ body.mentions #console-menu li:hover {
     width: 100%;
   }
 }
+
+/* ZEPHYROS PAGE COMPLET */
+body.zephyros {
+  background: radial-gradient(circle at center, #002211 0%, #001100 90%);
+  color: #55ff55;
+}
+body.zephyros h1.glitch {
+  color: #55ff55;
+  font-size: 5rem;
+  letter-spacing: 12px;
+  text-shadow:
+    0 0 10px #55ff55,
+    0 0 20px #66ff66,
+    0 0 30px #77ff77;
+}
+body.zephyros .subtitle {
+  color: #99ff99cc;
+  text-shadow: 0 0 12px #88ff88bb;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+body.zephyros .content {
+  background: rgba(0, 40, 20, 0.7);
+  border: 2px solid #55ff5588;
+  border-radius: 30px;
+  box-shadow:
+    0 0 10px #55ff55cc,
+    0 0 30px #55ff5566 inset;
+  backdrop-filter: blur(12px);
+  padding: 3rem 2rem;
+  max-width: 900px;
+  position: relative;
+  z-index: 10;
+}
+body.zephyros .btn {
+  color: #55ff55;
+  border: 2.5px solid #55ff55;
+  background: transparent;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #55ff5577;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease, color 0.3s ease;
+  cursor: pointer;
+}
+body.zephyros .btn:hover,
+body.zephyros .btn:focus {
+  background-color: #55ff5522;
+  box-shadow:
+    0 0 20px #66ff66,
+    0 0 40px #77ff77;
+  color: #fff;
+  outline: none;
+}
