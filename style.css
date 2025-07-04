@@ -265,25 +265,103 @@ body.contact #console-menu li:hover {
   color: #220011;
 }
 
-/* HISTOIRE PAGE */
-body.histoire {
-  background: radial-gradient(circle at center, #110011 0%, #000000 90%);
-  color: #ff88ff;
+/* HEAVENIS PAGE AMÉLIORÉE */
+body.heavenis {
+  background: radial-gradient(circle at center, #1a0033 0%, #000011 80%);
+  color: #e0aaff;
+  font-family: 'Orbitron', monospace;
+  overflow-x: hidden;
+  user-select: none;
+  cursor: crosshair;
+  transition: background 0.8s ease, color 0.8s ease;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
 }
-body.histoire h1.glitch {
-  color: #ff88ff;
+
+/* Scanlines animées, style rétro futuriste */
+body.heavenis::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(224, 170, 255, 0.06),
+    rgba(224, 170, 255, 0.06) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 1;
+  animation: scanlines 6s linear infinite;
 }
-body.histoire #console-menu ul {
-  border-color: #ff88ff;
-  box-shadow: 0 0 30px #ff88ffaa;
+
+/* Conteneur principal */
+.content {
+  background: rgba(40, 0, 60, 0.75);
+  border-radius: 30px;
+  padding: 3rem 3.5rem;
+  max-width: 900px;
+  box-shadow:
+    0 0 20px #e0aaffcc,
+    inset 0 0 15px #aa55ff99;
+  backdrop-filter: blur(15px);
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  animation: fadeInUp 1.8s ease forwards;
 }
-body.histoire #console-menu li {
-  border-color: #ff88ffcc;
-  color: #ff88ff;
+
+/* Titres glitch améliorés */
+h1.glitch {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 14px;
+  color: #e0aaff;
+  position: relative;
+  user-select: none;
+  text-shadow:
+    0 0 15px #ffccff,
+    0 0 25px #bb66ff,
+    0 0 40px #aa55ff;
+  animation: flicker 4s infinite alternate;
 }
-body.histoire #console-menu li:hover {
-  background-color: #ff88ffbb;
-  color: #110011;
+
+h1.glitch::before,
+h1.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  opacity: 0.75;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  pointer-events: none;
+}
+
+h1.glitch::before {
+  left: 3px;
+  text-shadow: -3px 0 #cc99ff;
+  animation: glitchTop 4s infinite alternate;
+}
+
+h1.glitch::after {
+  left: -3px;
+  top: 3px;
+  text-shadow: -3px 0 #ff99ff;
+  animation: glitchBottom 4s infinite alternate;
+}
+
+/* Sous-titre stylé */
+.subtitle {
+  font-size: 1.7rem;
+  margin-top: 20px;
+  color: #dbaaffcc;
+  text-shadow: 0 0 12px #bb77ffcc;
+  font-weight: 600;
+  user-select: none;
 }
 
 /* ZEPHYROS PAGE */
