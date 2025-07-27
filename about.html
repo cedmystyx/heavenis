@@ -7,46 +7,131 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
-
-  <!-- Style -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- JS (fond 3D + console menu) -->
+  <!-- JS fond 3D -->
   <script type="module" src="main.js" defer></script>
+
+  <style>
+    body.about {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    #canvas-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    .content {
+      text-align: center;
+      padding-top: 3rem;
+    }
+
+    h1.glitch {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #00ffe1;
+      text-shadow: 0 0 10px #00ffe1;
+    }
+
+    .console-instruction {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    #console-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 90vw;
+      overflow-x: auto;
+    }
+
+    #console-menu li {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid transparent;
+      border-radius: 20px;
+      padding: 1rem;
+      min-width: 150px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, border 0.2s ease;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    #console-menu li:focus,
+    #console-menu li.active {
+      outline: none;
+      border-color: #00ffe1;
+      transform: scale(1.1);
+      background: rgba(0, 255, 225, 0.1);
+      box-shadow: 0 0 15px #00ffe1;
+    }
+
+    .buttons {
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid #00ffe1;
+      border-radius: 10px;
+      color: #00ffe1;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #00ffe1;
+      color: #000;
+    }
+  </style>
 </head>
 <body class="about">
   <div id="canvas-container"></div>
 
-  <main class="content" role="main" aria-label="Menu console univers céleste">
-    <h1 class="glitch" data-text="MENU CONSOLE">MENU CONSOLE</h1>
+  <main class="content" role="main" aria-label="Menu Switch-like">
+    <h1 class="glitch" data-text="MENU SWITCH">MENU SWITCH</h1>
     <p class="console-instruction" aria-live="polite">
-      Utilise les flèches ↑ ↓ pour naviguer et Entrée pour valider.
+      Utilise les flèches ← → pour naviguer et Entrée pour valider.
     </p>
 
-    <nav id="console-menu" role="menu" aria-label="Navigation menu console">
+    <nav id="console-menu" role="menu" aria-label="Menu type Switch">
       <ul>
         <li role="menuitem" tabindex="0" data-href="histoire.html">Histoire</li>
         <li role="menuitem" tabindex="-1" data-href="contact.html">Contact</li>
         <li role="menuitem" tabindex="-1" data-href="zephyros.html">Zephyros</li>
         <li role="menuitem" tabindex="-1" data-href="heavenis.html">Heavenis</li>
-        <li role="menuitem" tabindex="-1" data-href="mentions-legales.html">Mentions légales</li>
+        <li role="menuitem" tabindex="-1" data-href="mentions-legales.html">Mentions</li>
       </ul>
     </nav>
 
-    <nav class="buttons" aria-label="Navigation secondaire">
-      <a href="index.html" class="btn" role="button">Accueil</a>
+    <nav class="buttons">
+      <a href="index.html" class="btn">Accueil</a>
     </nav>
   </main>
 
   <script>
-    // Script console-menu clavier accessible et UX
-
     const menu = document.getElementById('console-menu');
     const items = menu.querySelectorAll('li[role="menuitem"]');
     let currentIndex = 0;
 
-    // Focus initial sur le premier item
     items[currentIndex].tabIndex = 0;
+    items[currentIndex].classList.add('active');
     items[currentIndex].focus();
 
     function updateFocus(newIndex) {
@@ -54,34 +139,36 @@
       if (newIndex >= items.length) newIndex = 0;
 
       items[currentIndex].tabIndex = -1;
+      items[currentIndex].classList.remove('active');
+
       items[newIndex].tabIndex = 0;
+      items[newIndex].classList.add('active');
       items[newIndex].focus();
+
       currentIndex = newIndex;
     }
 
     menu.addEventListener('keydown', e => {
-      switch(e.key) {
-        case 'ArrowDown':
+      switch (e.key) {
+        case 'ArrowRight':
           e.preventDefault();
           updateFocus(currentIndex + 1);
           break;
-        case 'ArrowUp':
+        case 'ArrowLeft':
           e.preventDefault();
           updateFocus(currentIndex - 1);
           break;
         case 'Enter':
           e.preventDefault();
           const href = items[currentIndex].dataset.href;
-          if(href) window.location.href = href;
+          if (href) window.location.href = href;
           break;
         case 'Escape':
-          e.preventDefault();
           window.location.href = 'index.html';
           break;
       }
     });
 
-    // Clic souris aussi redirige
     items.forEach((item, i) => {
       item.addEventListener('click', () => {
         window.location.href = item.dataset.href;
