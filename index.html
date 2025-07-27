@@ -2,24 +2,28 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heavenis & Zephyros - Univers Céleste</title>
 
-  <!-- Fonts -->
+  <!-- Preconnect pour performance police -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Police Orbitron -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- Style CSS -->
+  <!-- Feuille de style principale -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Three.js CDN (module) -->
+  <!-- Script principal Three.js (module moderne + defer pour performance) -->
   <script type="module" src="main.js" defer></script>
 </head>
 <body>
-  <!-- Conteneur canvas pour fond 3D -->
-  <div id="canvas-container"></div>
+  <!-- Arrière-plan 3D (canvas injecté par JS) -->
+  <div id="canvas-container" aria-hidden="true"></div>
 
-  <!-- Contenu central -->
-  <main class="content" role="main" aria-label="Accueil Heavenis et Zephyros">
+  <!-- Contenu principal -->
+  <main class="content" role="main" aria-label="Accueil du site Heavenis & Zephyros">
     <h1 class="glitch" data-text="HEAVENIS & ZEPHYROS">HEAVENIS & ZEPHYROS</h1>
     <p class="subtitle">Un univers céleste communautaire</p>
 
