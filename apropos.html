@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Heavenis - À propos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      min-height:100vh;
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      color:white;
+      overflow-x:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    canvas {
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+    }
+
+    nav {
+      position:relative;
+      z-index:10;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      width:100%;
+      padding:20px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+    }
+
+    nav a { text-decoration:none; }
+
+    .menu-btn {
+      background: linear-gradient(45deg, #00ffcc, #3333ff);
+      border:none;
+      padding:14px 28px;
+      border-radius:12px;
+      color:white;
+      font-size:1.1em;
+      cursor:pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display:inline-block;
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow:0 0 20px rgba(0,255,204,0.7);
+    }
+
+    .content {
+      position:relative;
+      z-index:10;
+      text-align:center;
+      max-width:900px;
+      margin-top:80px;
+      padding:0 20px;
+    }
+
+    h1 {
+      font-size:3em;
+      margin-bottom:20px;
+      background: linear-gradient(45deg, #00ffcc, #3333ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section {
+      margin-bottom:50px;
+      opacity:0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    .section.show {
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    p {
+      font-size:1.2em;
+      line-height:1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bg"></canvas>
+
+  <!-- Menu -->
+  <nav>
+    <a href="acceuil.html"><div class="menu-btn">Accueil</div></a>
+    <a href="histoire.html"><div class="menu-btn">Histoire</div></a>
+    <a href="contact.html"><div class="menu-btn">Contact</div></a>
+    <a href="serveur.html"><div class="menu-btn">Serveur Minecraft</div></a>
+    <a href="game.html"><div class="menu-btn">Game</div></a>
+  </nav>
+
+  <!-- Contenu -->
+  <div class="content">
+    <h1>À propos de Heavenis</h1>
+
+    <div class="section">
+      <p>Heavenis est un univers numérique futuriste où technologie et imagination se rencontrent pour créer une expérience immersive unique. Ici, chaque visiteur devient explorateur d’un monde interactif.</p>
+    </div>
+
+    <div class="section">
+      <p>Notre objectif est de construire une communauté dynamique, où créativité et gaming se mélangent. Sur Heavenis, chaque détail est pensé pour plonger le joueur dans un environnement à la fois esthétique et vivant.</p>
+    </div>
+
+    <div class="section">
+      <p>Que ce soit pour explorer l’histoire du monde, participer sur le serveur Minecraft ou simplement admirer l’univers, Heavenis offre une expérience complète et cohérente pour tous les passionnés.</p>
+    </div>
+  </div>
+
+  <script>
+    // Fond dynamique avec particules
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    for(let i=0;i<100;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*3+1,
+        speed: Math.random()*1+0.2
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{
+        p.y -= p.speed;
+        if(p.y<0) p.y = canvas.height;
+        ctx.fillStyle="rgba(0,255,204,0.7)";
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+    window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+
+    // Animation des sections au chargement
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((sec, i)=>{
+      setTimeout(()=>{sec.classList.add('show');}, 500 + i*500);
+    });
+  </script>
+
+</body>
+</html>

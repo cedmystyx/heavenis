@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Heavenis - Jeux</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1c1c1c, #2d2d2d);
+      color: white;
+      text-align: center;
+    }
+
+    /* Navbar */
+    nav {
+      background: #111;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffcc;
+    }
+
+    h1 {
+      margin: 30px 0;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    .games-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .game-card {
+      background: #222;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .game-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+    }
+
+    .game-card h2 {
+      margin-bottom: 15px;
+      color: #00ffcc;
+    }
+
+    .game-card p {
+      font-size: 0.9em;
+      color: #bbb;
+    }
+
+    .play-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffcc;
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .play-button:hover {
+      background: #00cc99;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="acceuil.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="server.html">Serveur</a>
+    <a href="histoire.html">Histoire</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <h1>🎮 Sélection de Jeux Heavenis</h1>
+
+  <div class="games-card">
+    <div class="game-card">
+      <h2>Skyfall Trix</h2>
+      <p>Un Tetris pas comme les astres.</p>
+      <button class="play-button" onclick="window.location.href='tetris.html'">Jouer</button>
+    </div>
+
+  <div class="game-card">
+  <h2>Slytheris</h2>
+  <p>Attrape les pixels, deviens le serpent légendaire de Heavenis !</p>
+  <button class="play-button" onclick="window.location.href='snake.html'">Jouer</button>
+</div>
+
+<div class="games-card">
+    <div class="game-card">
+      <h2>DollarClick</h2>
+      <p>Pour les spammer venez cliquer chez les étoiles</p>
+      <button class="play-button" onclick="window.location.href='cliker.html'">Jouer</button>
+    </div>
+
+
+    <div class="game-card">
+      <h2>À venir...</h2>
+      <p>De nouveaux jeux arriveront bientôt dans Heavenis !</p>
+      <button class="play-button" disabled>Prochainement</button>
+    </div>
+  </div>
+</body>
+</html>

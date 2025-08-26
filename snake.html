@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Slytheris - Snake Heavenis</title>
+<style>
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background: linear-gradient(135deg,#0a0a0a,#111);
+  color:#00ffcc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* Menus */
+.menu {
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#111,#222);
+  z-index:10;
+}
+
+.menu h1 {
+  font-size:4em;
+  margin-bottom:30px;
+  text-shadow:0 0 15px #00ffcc,0 0 30px #00ffcc;
+}
+
+.menu-btn {
+  padding:20px 50px;
+  font-size:1.5em;
+  color:#0a0a0a;
+  background:#00ffcc;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow:0 0 10px #00ffcc,0 0 20px #00ffcc;
+  transition:0.3s;
+  margin:10px;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  box-shadow:0 0 20px #00ffcc,0 0 40px #00ffcc;
+}
+
+canvas {
+  display:none;
+  background:#111;
+  border:2px solid #00ffcc;
+  border-radius:15px;
+}
+
+#score-board {
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:1.5em;
+  color:#00ffcc;
+  display:none;
+}
+
+#game-over {
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:20;
+}
+
+#game-over h2 {
+  font-size:3em;
+  margin-bottom:20px;
+  text-shadow:0 0 15px #ff0000,0 0 30px #ff0000;
+}
+
+#game-over button {
+  margin:10px;
+  padding:15px 40px;
+  font-size:1.2em;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#00ffcc;
+  color:#0a0a0a;
+  transition:0.3s;
+}
+
+#game-over button:hover {
+  transform:scale(1.1);
+  box-shadow:0 0 15px #00ffcc;
+}
+</style>
+</head>
+<body>
+
+<!-- Menu principal -->
+<div id="menu" class="menu">
+  <h1>Slytheris</h1>
+  <button class="menu-btn" onclick="showModeMenu()">Jouer</button>
+</div>
+
+<!-- Menu de mode/difficulté -->
+<div id="mode-menu" class="menu" style="display:none;">
+  <h1>Choisissez la difficulté</h1>
+  <button class="menu-btn" onclick="startGame(200,'Très facile')">Très facile</button>
+  <button class="menu-btn" onclick="startGame(180,'Facile')">Facile</button>
+  <button class="menu-btn" onclick="startGame(160,'Normal')">Normal</button>
+  <button class="menu-btn" onclick="startGame(140,'Intermédiaire')">Intermédiaire</button>
+  <button class="menu-btn" onclick="startGame(120,'Amateur')">Amateur</button>
+  <button class="menu-btn" onclick="startGame(100,'Semi-pro')">Semi-pro</button>
+  <button class="menu-btn" onclick="startGame(80,'Pro')">Pro</button>
+  <button class="menu-btn" onclick="startGame(60,'Champion')">Champion</button>
+  <button class="menu-btn" onclick="startGame(50,'Légende')">Légende</button>
+</div>
+
+<div id="score-board">Score: 0</div>
+<canvas id="gameCanvas" width="600" height="600"></canvas>
+
+<!-- Game Over -->
+<div id="game-over">
+  <h2>Game Over</h2>
+  <button onclick="restartGame()">Recommencer</button>
+  <button onclick="backToModeMenu()">Retour</button>
+</div>
+
+<script>
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+const menu=document.getElementById('menu');
+const modeMenu=document.getElementById('mode-menu');
+const scoreBoard=document.getElementById('score-board');
+const gameOverScreen=document.getElementById('game-over');
+
+const gridSize=20;
+const tileCount=canvas.width/gridSize;
+
+let snake=[];
+let velocity={x:1,y:0};
+let score=0;
+let gameInterval;
+let gameSpeed;
+let foods=[];
+let currentMode='';
+
+// Sons
+// const eatSound=new Audio('eat.mp3');
+// const gameOverSound=new Audio('gameover.mp3');
+
+function showModeMenu(){
+  menu.style.display='none';
+  modeMenu.style.display='flex';
+}
+
+function startGame(speed,mode){
+  modeMenu.style.display='none';
+  canvas.style.display='block';
+  scoreBoard.style.display='block';
+  gameSpeed=speed;
+  currentMode=mode;
+  resetGame();
+  document.addEventListener('keydown',keyPush);
+  gameInterval=setInterval(gameLoop,gameSpeed);
+}
+
+function resetGame(){
+  snake=[{x:10,y:10}];
+  velocity={x:1,y:0};
+  score=0;
+  foods=[];
+  spawnFood();
+  updateScore();
+}
+
+function restartGame(){
+  gameOverScreen.style.display='none';
+  resetGame();
+  gameInterval=setInterval(gameLoop,gameSpeed);
+}
+
+function backToModeMenu(){
+  gameOverScreen.style.display='none';
+  canvas.style.display='none';
+  scoreBoard.style.display='none';
+  modeMenu.style.display='flex';
+}
+
+function spawnFood(){
+  foods.push({x:Math.floor(Math.random()*tileCount),y:Math.floor(Math.random()*tileCount),type:'red'});
+  if(Math.random()<0.5) addGreenFood();
+}
+
+function addGreenFood(){
+  const fg={x:Math.floor(Math.random()*tileCount),y:Math.floor(Math.random()*tileCount),type:'green'};
+  foods.push(fg);
+  setTimeout(()=>{
+    const index=foods.indexOf(fg);
+    if(index>-1){
+      foods.splice(index,1);
+      addGreenFood();
+    }
+  },5000);
+}
+
+function keyPush(evt){
+  switch(evt.keyCode){
+    case 37: if(velocity.x===0) velocity={x:-1,y:0}; break;
+    case 38: if(velocity.y===0) velocity={x:0,y:-1}; break;
+    case 39: if(velocity.x===0) velocity={x:1,y:0}; break;
+    case 40: if(velocity.y===0) velocity={x:0,y:1}; break;
+  }
+}
+
+function gameLoop(){
+  const head={x:snake[0].x+velocity.x,y:snake[0].y+velocity.y};
+  snake.unshift(head);
+
+  // Collision
+  if(head.x<0||head.x>=tileCount||head.y<0||head.y>=tileCount||
+    snake.slice(1).some(s=>s.x===head.x&&s.y===head.y)){
+    clearInterval(gameInterval);
+    // gameOverSound.play();
+    gameOverScreen.style.display='flex';
+    return;
+  }
+
+  let ate=false;
+  foods.forEach((f,index)=>{
+    if(head.x===f.x&&head.y===f.y){
+      if(f.type==='green'){
+        clearInterval(gameInterval);
+        // gameOverSound.play();
+        gameOverScreen.style.display='flex';
+        return;
+      } else {
+        score++;
+        updateScore();
+        foods.splice(index,1);
+        spawnFood();
+        ate=true;
+        // eatSound.play();
+        if(gameSpeed>50){
+          gameSpeed-=2;
+          clearInterval(gameInterval);
+          gameInterval=setInterval(gameLoop,gameSpeed);
+        }
+      }
+    }
+  });
+  if(!ate) snake.pop();
+
+  // Fond
+  ctx.fillStyle='#111';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Serpent
+  for(let i=0;i<snake.length;i++){
+    if(i===0){
+      ctx.fillStyle='#00ffcc';
+      ctx.shadowColor='#00ffcc';
+      ctx.shadowBlur=15;
+      ctx.font=gridSize+'px Arial';
+      ctx.fillText('🐍',snake[i].x*gridSize,snake[i].y*gridSize+gridSize);
+    } else {
+      ctx.fillStyle='#00ffcc';
+      ctx.shadowColor='#00ffcc';
+      ctx.shadowBlur=10;
+      ctx.fillRect(snake[i].x*gridSize,snake[i].y*gridSize,gridSize,gridSize);
+    }
+  }
+
+  // Food
+  foods.forEach(f=>{
+    ctx.font=gridSize+'px Arial';
+    if(f.type==='red') ctx.fillText('🍎',f.x*gridSize,f.y*gridSize+gridSize);
+    else ctx.fillText('🍏',f.x*gridSize,f.y*gridSize+gridSize);
+  });
+}
+
+function updateScore(){
+  scoreBoard.textContent='Score: '+score;
+}
+</script>
+</body>
+</html>

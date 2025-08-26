@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyfall Trix - Heavenis</title>
+<style>
+body {
+  margin:0;
+  font-family:'Arial Black',sans-serif;
+  background: linear-gradient(135deg,#0a0a0a,#1f1f2e);
+  color:white;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+canvas {
+  background:#111;
+  box-shadow:0 0 30px rgba(0,255,204,0.5);
+  display:block;
+}
+
+/* Menus */
+.menu, .modeMenu, .gameOverScreen {
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.9);
+  z-index:100;
+}
+.menu h1, .modeMenu h2, .gameOverScreen h1 {
+  text-shadow:0 0 20px #00ffcc;
+  margin-bottom:40px;
+  font-size:3em;
+}
+
+.menu-btn {
+  padding:15px 40px;
+  margin:10px;
+  font-size:1.3em;
+  font-weight:bold;
+  background:linear-gradient(145deg,#00ffcc,#00aabb);
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  color:#000;
+  text-shadow:0 2px 2px rgba(0,0,0,0.5);
+  box-shadow:0 5px 0 #008080, 0 10px 15px rgba(0,255,204,0.3);
+  transition:0.2s;
+}
+.menu-btn:hover {
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 2px 0 #008080, 0 15px 25px rgba(0,255,204,0.6);
+}
+
+/* Mode Menu façon Geometry Dash */
+.modeMenu .mode-buttons {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.modeMenu .menu-btn {
+  width:220px;
+  text-align:center;
+  margin:8px;
+}
+
+/* Score */
+#scoreBoard {
+  position:absolute;
+  top:20px; right:20px;
+  font-size:20px;
+  color:#00ffcc;
+  display:none;
+}
+</style>
+</head>
+<body>
+
+<!-- Menu principal -->
+<div id="menu" class="menu">
+  <!-- Bouton retour -->
+  <button class="menu-btn" style="position:absolute; top:20px; left:20px;" onclick="window.location.href='game.html'">← Retour</button>
+  
+  <h1>Skyfall Trix</h1>
+  <button class="menu-btn" onclick="showModeMenu()">Jouer</button>
+</div>
+
+<!-- Menu choix de mode -->
+<div id="modeMenu" class="modeMenu" style="display:none;">
+  <h2>Choisis ton mode</h2>
+  <div class="mode-buttons">
+    <button class="menu-btn" onclick="startGame(0)">Étoile Naissante</button>
+    <button class="menu-btn" onclick="startGame(1)">Nuage Bleu</button>
+    <button class="menu-btn" onclick="startGame(2)">Aurore</button>
+    <button class="menu-btn" onclick="startGame(3)">Orage Celeste</button>
+    <button class="menu-btn" onclick="startGame(4)">Flamme Sacrée</button>
+    <button class="menu-btn" onclick="startGame(5)">Phénix</button>
+    <button class="menu-btn" onclick="startGame(6)">Éclipse</button>
+    <button class="menu-btn" onclick="startGame(7)">Constellation</button>
+    <button class="menu-btn" onclick="startGame(8)">Paradis</button>
+  </div>
+  <button class="menu-btn" onclick="showMenu()">← Retour</button>
+</div>
+
+<!-- Score -->
+<div id="scoreBoard">Score:0 | Niveau:1</div>
+
+<!-- Canvas Tetris -->
+<canvas id="tetris" style="display:none;"></canvas>
+
+<!-- Game Over -->
+<div id="gameOverScreen" class="gameOverScreen" style="display:none;">
+  <h1>Game Over</h1>
+  <button class="menu-btn" onclick="restartGame()">Recommencer</button>
+  <button class="menu-btn" onclick="showModeMenu()">Retour</button>
+</div>
+
+<script>
+const canvas=document.getElementById('tetris');
+const context=canvas.getContext('2d');
+const scoreBoard=document.getElementById('scoreBoard');
+const menu=document.getElementById('menu');
+const modeMenu=document.getElementById('modeMenu');
+const gameOverScreen=document.getElementById('gameOverScreen');
+
+const COLS=10;
+const ROWS=20;
+const BLOCK_SIZE=30;
+
+canvas.width=COLS*BLOCK_SIZE;
+canvas.height=ROWS*BLOCK_SIZE;
+canvas.style.position='absolute';
+canvas.style.top='50%';
+canvas.style.left='50%';
+canvas.style.transform='translate(-50%,-50%)';
+
+let arena, player, dropCounter, dropInterval, lastTime, score, level;
+const colors=[null,'#00ffff','#ff00ff','#ffff00','#00ff00','#ff5500','#5555ff','#ff5555'];
+const pieces='TJLOSZI';
+const modes=[
+  {name:"Étoile Naissante",interval:1000},
+  {name:"Nuage Bleu",interval:900},
+  {name:"Aurore",interval:800},
+  {name:"Orage Celeste",interval:700},
+  {name:"Flamme Sacrée",interval:600},
+  {name:"Phénix",interval:500},
+  {name:"Éclipse",interval:450},
+  {name:"Constellation",interval:400},
+  {name:"Paradis",interval:350},
+];
+
+function createMatrix(w,h){const matrix=[];while(h--)matrix.push(new Array(w).fill(0));return matrix;}
+function createPiece(type){switch(type){case'T':return[[0,1,0],[1,1,1],[0,0,0]];case'O':return[[2,2],[2,2]];case'L':return[[0,0,3],[3,3,3],[0,0,0]];case'J':return[[4,0,0],[4,4,4],[0,0,0]];case'I':return[[0,5,0,0],[0,5,0,0],[0,5,0,0],[0,5,0,0]];case'S':return[[0,6,6],[6,6,0],[0,0,0]];case'Z':return[[7,7,0],[0,7,7],[0,0,0]];}}
+function collide(arena,player){const[m,o]=[player.matrix,player.pos];for(let y=0;y<m.length;y++){for(let x=0;x<m[y].length;x++){if(m[y][x]!==0&&(arena[y+o.y]&&arena[y+o.y][x+o.x])!==0)return true;}}return false;}
+function merge(arena,player){player.matrix.forEach((row,y)=>row.forEach((value,x)=>{if(value!==0)arena[y+player.pos.y][x+player.pos.x]=value;}));}
+function arenaSweep(){let rowCount=1;outer:for(let y=arena.length-1;y>=0;y--){for(let x=0;x<arena[y].length;x++){if(arena[y][x]===0)continue outer;}arena.splice(y,1);arena.unshift(new Array(COLS).fill(0));score+=rowCount*10;rowCount*=2;}updateScore();}
+function rotate(matrix,dir){for(let y=0;y<matrix.length;y++){for(let x=0;x<y;x++){[matrix[x][y],matrix[y][x]]=[matrix[y][x],matrix[x][y]];}}if(dir>0)matrix.forEach(row=>row.reverse());else matrix.reverse();}
+function playerMove(dir){player.pos.x+=dir;if(collide(arena,player))player.pos.x-=dir;}
+function playerDrop(){player.pos.y++;if(collide(arena,player)){player.pos.y--;merge(arena,player);arenaSweep();playerReset();if(collide(arena,player)){gameOver();}}dropCounter=0;}
+function playerReset(){player.matrix=createPiece(pieces[Math.floor(Math.random()*pieces.length)]);player.pos.y=0;player.pos.x=Math.floor(COLS/2)-Math.floor(player.matrix[0].length/2);}
+function playerRotate(dir){rotate(player.matrix,dir);if(collide(arena,player)){player.pos.x+=dir;if(collide(arena,player))player.pos.x-=dir;}}
+
+function drawMatrix(matrix,offset){
+  matrix.forEach((row,y)=>row.forEach((value,x)=>{
+    if(value!==0){
+      context.fillStyle=colors[value];
+      context.shadowColor=colors[value];
+      context.shadowBlur=10;
+      context.fillRect(x+offset.x,y+offset.y,1,1);
+      context.strokeStyle="#000";
+      context.lineWidth=0.05;
+      context.strokeRect(x+offset.x,y+offset.y,1,1);
+    }
+  }));
+}
+
+function draw(){
+  context.setTransform(BLOCK_SIZE,0,0,BLOCK_SIZE,0,0);
+  context.fillStyle="#111";
+  context.fillRect(0,0,COLS,ROWS);
+  drawMatrix(arena,{x:0,y:0});
+  drawMatrix(player.matrix,player.pos);
+}
+
+function updateScore(){scoreBoard.innerText=`Score:${score} | Niveau:${level}`;}
+
+function update(time=0){
+  const delta=time-lastTime;
+  lastTime=time;
+  dropCounter+=delta;
+  if(dropCounter>dropInterval)playerDrop();
+  draw();
+  if(gameOverScreen.style.display==='none')requestAnimationFrame(update);
+}
+
+function showMenu(){menu.style.display='flex';modeMenu.style.display='none';canvas.style.display='none';scoreBoard.style.display='none';gameOverScreen.style.display='none';}
+function showModeMenu(){menu.style.display='none';modeMenu.style.display='flex';canvas.style.display='none';scoreBoard.style.display='none';gameOverScreen.style.display='none';}
+function startGame(modeIndex){
+  arena=createMatrix(COLS,ROWS);
+  player={pos:{x:0,y:0},matrix:null};
+  dropCounter=0;
+  dropInterval=modes[modeIndex].interval;
+  lastTime=0;
+  score=0; level=1;
+  canvas.style.display='block';
+  scoreBoard.style.display='block';
+  modeMenu.style.display='none';
+  playerReset();
+  update();
+}
+function restartGame(){gameOverScreen.style.display='none';showModeMenu();}
+function gameOver(){canvas.style.display='none';scoreBoard.style.display='none';gameOverScreen.style.display='flex';}
+
+document.addEventListener('keydown',event=>{
+  if(event.keyCode===37)playerMove(-1);
+  else if(event.keyCode===39)playerMove(1);
+  else if(event.keyCode===40)playerDrop();
+  else if(event.keyCode===38)playerRotate(1);
+});
+</script>
+</body>
+</html>
